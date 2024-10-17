@@ -1,0 +1,19 @@
+public class ReverseStrings {
+
+    // Method to reverse a string
+    public static String reverseString(String str) {
+        StringBuilder reversed = new StringBuilder(str);
+        return reversed.reverse().toString();
+    }
+
+    public static void main(String[] args) {
+        // Sample array of strings
+        String[] stringArray = {"Hello", "World", "Java", "Programming"};
+
+        // Display each string in reverse order
+        System.out.println("Reversed strings:");
+        for (String str : stringArray) {
+            System.out.println(reverseString(str));
+        }
+    }
+}

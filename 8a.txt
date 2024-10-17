@@ -1,0 +1,43 @@
+// Define the Shape interface
+interface Shape {
+    double area(); // Abstract method to calculate area
+}
+
+// Circle class implementing Shape interface
+class Circle implements Shape {
+    private final double radius; // Final variable for radius
+
+    public Circle(double radius) {
+        this.radius = radius; // Constructor to initialize radius
+    }
+
+    @Override
+    public double area() {
+        return Math.PI * radius * radius; // Area of circle = π * r^2
+    }
+}
+
+// Sphere class implementing Shape interface
+class Sphere implements Shape {
+    private final double radius; // Final variable for radius
+
+    public Sphere(double radius) {
+        this.radius = radius; // Constructor to initialize radius
+    }
+
+    @Override
+    public double area() {
+        return 4 * Math.PI * radius * radius; // Surface area of sphere = 4π * r^2
+    }
+}
+
+// Main class to test the implementation
+public class ShapeAreaCalculator {
+    public static void main(String[] args) {
+        Shape circle = new Circle(5.0); // Create a Circle object with radius 5.0
+        System.out.printf("Area of Circle: %.2f%n", circle.area()); // Display area of circle
+
+        Shape sphere = new Sphere(5.0); // Create a Sphere object with radius 5.0
+        System.out.printf("Surface Area of Sphere: %.2f%n", sphere.area()); // Display surface area of sphere
+    }
+}

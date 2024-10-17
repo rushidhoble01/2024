@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class PowerCalculator {
+
+    // Method to calculate power using recursion
+    public static double power(double base, int exponent) {
+        // Base case: any number to the power of 0 is 1
+        if (exponent == 0) {
+            return 1;
+        }
+        // Recursive case: multiply base with the result of power(base, exponent - 1)
+        return base * power(base, exponent - 1);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input base and exponent
+        System.out.print("Enter the base: ");
+        double base = scanner.nextDouble();
+
+        System.out.print("Enter the exponent: ");
+        int exponent = scanner.nextInt();
+
+        // Calculate power
+        double result = power(base, exponent);
+
+        // Display result
+        System.out.printf("%.2f raised to the power of %d is %.2f%n", base, exponent, result);
+
+        // Close the scanner
+        scanner.close();
+    }
+}

@@ -1,0 +1,27 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ReverseWordsFromFile {
+    public static void main(String[] args) {
+        // Specify the full path to your input.txt file
+        String filePath = "I:\\2024\\10\\input.txt"; // Use double backslashes in file path
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] words = line.split("\\s+");
+                for (String word : words) {
+                    System.out.print(reverseString(word) + " ");
+                }
+                System.out.println(); // New line after each line of words
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String reverseString(String str) {
+        return new StringBuilder(str).reverse().toString();
+    }
+}

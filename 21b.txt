@@ -1,0 +1,39 @@
+import java.util.Hashtable;
+import java.util.Scanner;
+
+public class CitySTDCode {
+    public static void main(String[] args) {
+        // Create a hashtable to store city names and their STD codes
+        Hashtable<String, String> citySTDCode = new Hashtable<>();
+
+        // Adding city names and STD codes to the hashtable
+        citySTDCode.put("Mumbai", "022");
+        citySTDCode.put("Delhi", "011");
+        citySTDCode.put("Bangalore", "080");
+        citySTDCode.put("Chennai", "044");
+        citySTDCode.put("Kolkata", "033");
+        citySTDCode.put("Pune", "020");
+
+        // Display all city names and their STD codes
+        System.out.println("City Name and STD Code:");
+        for (String city : citySTDCode.keySet()) {
+            System.out.println("City: " + city + ", STD Code: " + citySTDCode.get(city));
+        }
+
+        // Create a scanner for user input
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("\nEnter the city name to search for its STD code: ");
+        String searchCity = scanner.nextLine();
+
+        // Search for the city in the hashtable
+        String stdCode = citySTDCode.get(searchCity);
+        if (stdCode != null) {
+            System.out.println("The STD code for " + searchCity + " is: " + stdCode);
+        } else {
+            System.out.println("City not found in the hashtable.");
+        }
+
+        // Close the scanner
+        scanner.close();
+    }
+}

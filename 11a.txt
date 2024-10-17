@@ -1,0 +1,36 @@
+public class ArithmeticOperations {
+
+    public static void main(String[] args) {
+        if (args.length != 3) {
+            System.out.println("Usage: java ArithmeticOperations <num1> <num2> <operation>");
+            System.out.println("Operation: add, subtract, multiply, divide");
+            return;
+        }
+
+        // Parse the input numbers
+        double num1 = Double.parseDouble(args[0]);
+        double num2 = Double.parseDouble(args[1]);
+        String operation = args[2].toLowerCase();
+
+        switch (operation) {
+            case "add":
+                System.out.printf("Result of Addition: %.2f\n", num1 + num2);
+                break;
+            case "subtract":
+                System.out.printf("Result of Subtraction: %.2f\n", num1 - num2);
+                break;
+            case "multiply":
+                System.out.printf("Result of Multiplication: %.2f\n", num1 * num2);
+                break;
+            case "divide":
+                if (num2 != 0) {
+                    System.out.printf("Result of Division: %.2f\n", num1 / num2);
+                } else {
+                    System.out.println("Error: Division by zero is not allowed.");
+                }
+                break;
+            default:
+                System.out.println("Invalid operation. Please use add, subtract, multiply, or divide.");
+        }
+    }
+}

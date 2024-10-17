@@ -1,0 +1,53 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class MultiplicationTableApp {
+    
+    public static void main(String[] args) {
+        // Create the frame
+        JFrame frame = new JFrame("Multiplication Table");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(300, 300);
+        frame.setLayout(new FlowLayout());
+
+        // Create input field for the number
+        JTextField numberField = new JTextField(10);
+        JLabel label = new JLabel("Enter a number:");
+        
+        // Create a button to generate the multiplication table
+        JButton button = new JButton("Generate Table");
+        
+        // Create a List to display the multiplication table
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+        JList<String> list = new JList<>(listModel);
+        JScrollPane scrollPane = new JScrollPane(list);
+        scrollPane.setPreferredSize(new Dimension(250, 150));
+
+        // Add action listener to the button
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listModel.clear(); // Clear previous results
+                try {
+                    int number = Integer.parseInt(numberField.getText());
+                    for (int i = 1; i <= 10; i++) {
+                        listModel.addElement(number + " x " + i + " = " + (number * i));
+                    }
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(frame, "Please enter a valid number.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
+        // Add components to the frame
+        frame.add(label);
+        frame.add(numberField);
+        frame.add(button);
+        frame.add(scrollPane);
+
+        // Make the frame visible
+        frame.setVisible(true);
+    }
+}

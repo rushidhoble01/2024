@@ -1,0 +1,28 @@
+class ParenthesesValidator:
+    def __init__(self, string):
+        self.string = string
+
+    def is_valid(self):
+        stack = []
+        # Mapping of closing brackets to opening brackets
+        bracket_map = {')': '(', '}': '{', ']': '['}
+        
+        for char in self.string:
+            if char in bracket_map.values():  # If it's an opening bracket
+                stack.append(char)
+            elif char in bracket_map.keys():  # If it's a closing bracket
+                if stack and stack[-1] == bracket_map[char]:
+                    stack.pop()  # Pop the last opening bracket if it matches
+                else:
+                    return False  # Invalid if there's no matching opening bracket
+
+        return len(stack) == 0  # Return True if stack is empty, meaning all brackets matched
+
+# Example usage
+if __name__ == "__main__":
+    test_strings = ["()", "()[]{}", "[)", "({[)]", "{{{"]
+    
+    for test in test_strings:
+        validator = ParenthesesValidator(test)
+        result = validator.is_valid()
+        print(f"{test}: {'Valid' if result else 'Invalid'}")

@@ -1,0 +1,17 @@
+
+# Define the tuples
+tuple1 = (1, 2, 3, 4)
+tuple2 = (3, 5, 2, 1)
+tuple3 = (2, 2, 3, 1)
+
+# Compute the element-wise sum using zip() and a generator expression
+element_wise_sum = tuple(a + b + c for a, b, c in zip(tuple1, tuple2, tuple3))
+
+# Display the result
+print("Original tuples:")
+print(tuple1)
+print(tuple2)
+print(tuple3)
+
+print("\nElement-wise sum of the said tuples:")
+print(element_wise_sum)

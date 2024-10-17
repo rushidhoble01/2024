@@ -1,0 +1,33 @@
+import tkinter as tk
+from tkinter import Menu
+
+# Function to change background color
+def change_bg(color):
+    root.configure(bg=color)
+
+# Create the main window
+root = tk.Tk()
+root.title("Change Background Color")
+root.geometry("400x300")
+
+# Create a menu bar
+menu_bar = Menu(root)
+
+# Add "Colors" menu to the menu bar
+colors_menu = Menu(menu_bar, tearoff=0)
+
+# Add color options to the "Colors" menu
+colors_menu.add_command(label="Red", command=lambda: change_bg('red'))
+colors_menu.add_command(label="Green", command=lambda: change_bg('green'))
+colors_menu.add_command(label="Blue", command=lambda: change_bg('blue'))
+colors_menu.add_command(label="Yellow", command=lambda: change_bg('yellow'))
+colors_menu.add_command(label="White", command=lambda: change_bg('white'))
+
+# Add "Colors" to the menu bar
+menu_bar.add_cascade(label="Colors", menu=colors_menu)
+
+# Configure the menu bar
+root.config(menu=menu_bar)
+
+# Start the Tkinter main loop
+root.mainloop()

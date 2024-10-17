@@ -1,0 +1,41 @@
+import java.applet.Applet;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Random;
+
+public class TableLampApplet extends Applet {
+
+    private Color lampColor = Color.YELLOW; // Default lamp color
+
+    @Override
+    public void init() {
+        setSize(300, 400);
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                changeLampColor();
+                repaint(); // Call the paint method to update the display
+            }
+        });
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        // Draw the lamp base
+        g.setColor(Color.GRAY);
+        g.fillRect(120, 300, 60, 10); // Lamp base
+        g.fillRect(140, 270, 20, 30); // Lamp pole
+
+        // Draw the lamp shade
+        g.setColor(lampColor);
+        g.fillArc(100, 200, 100, 100, 0, 180); // Lamp shade
+        g.fillRect(100, 200, 100, 20); // Shade bottom
+    }
+
+    private void changeLampColor() {
+        // Generate a random color
+        Random rand = new Random();
+        lampColor = new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256));
+    }
+}

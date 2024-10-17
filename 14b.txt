@@ -1,0 +1,72 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class EmployeeDetailsApp {
+
+    public static void main(String[] args) {
+        JFrame inputFrame = new JFrame("Employee Details Input");
+        inputFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        inputFrame.setSize(300, 200);
+        inputFrame.setLayout(new GridLayout(4, 2));
+
+        // Create labels and text fields
+        JLabel enoLabel = new JLabel("Employee Number:");
+        JTextField enoField = new JTextField();
+        
+        JLabel nameLabel = new JLabel("Employee Name:");
+        JTextField nameField = new JTextField();
+        
+        JLabel salLabel = new JLabel("Salary:");
+        JTextField salField = new JTextField();
+
+        JButton submitButton = new JButton("Submit");
+
+        // Add components to the frame
+        inputFrame.add(enoLabel);
+        inputFrame.add(enoField);
+        inputFrame.add(nameLabel);
+        inputFrame.add(nameField);
+        inputFrame.add(salLabel);
+        inputFrame.add(salField);
+        inputFrame.add(new JLabel()); // Empty cell for spacing
+        inputFrame.add(submitButton);
+
+        inputFrame.setVisible(true);
+
+        // Action listener for the button
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String eno = enoField.getText();
+                String name = nameField.getText();
+                String salary = salField.getText();
+
+                // Create a new frame to display the details
+                JFrame displayFrame = new JFrame("Employee Details");
+                displayFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                displayFrame.setSize(300, 200);
+                displayFrame.setLayout(new GridLayout(4, 1));
+
+                // Add details to the new frame
+                displayFrame.add(new JLabel("Employee Number: " + eno));
+                displayFrame.add(new JLabel("Employee Name: " + name));
+                displayFrame.add(new JLabel("Salary: " + salary));
+
+                JButton closeButton = new JButton("Close");
+                displayFrame.add(closeButton);
+
+                // Add action listener to close button
+                closeButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        displayFrame.dispose(); // Close the display frame
+                    }
+                });
+
+                displayFrame.setVisible(true);
+            }
+        });
+    }
+}

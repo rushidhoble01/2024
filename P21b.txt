@@ -1,0 +1,9 @@
+# Original tuple of string values
+original_tuple = (('333', '33'), ('1416', '55'))
+
+# Convert to a tuple of integer values
+converted_tuple = tuple(tuple(int(value) for value in inner) for inner in original_tuple)
+
+# Display the results
+print("Original tuple values:", original_tuple)
+print("New tuple values:", converted_tuple)

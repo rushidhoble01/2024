@@ -1,0 +1,100 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class CompoundInterestCalculator {
+
+    public static void main(String[] args) {
+        // Create the frame
+        JFrame frame = new JFrame("Compound Interest Calculator");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
+        frame.setLayout(new GridLayout(6, 2, 10, 10)); // Ensure a semicolon here
+
+        // Create labels and text fields for input
+        JLabel principalLabel = new JLabel("Principal Amount:");
+        JTextField principalField = new JTextField();
+
+        JLabel rateLabel = new JLabel("Interest Rate (%):");
+        JTextField rateField = new JTextField();
+
+        JLabel timeLabel = new JLabel("Time (years):");
+        JTextField timeField = new JTextField();
+
+        JLabel totalAmountLabel = new JLabel("Total Amount:");
+        JTextField totalAmountField = new JTextField();
+        totalAmountField.setEditable(false); // Make it read-only
+
+        JLabel interestAmountLabel = new JLabel("Interest Amount:");
+        JTextField interestAmountField = new JTextField();
+        interestAmountField.setEditable(false); // Make it read-only
+
+        // Create buttons for Calculate, Clear, and Close
+        JButton calculateButton = new JButton("Calculate");
+        JButton clearButton = new JButton("Clear");
+        JButton closeButton = new JButton("Close");
+
+        // Add ActionListener to the Calculate button
+        calculateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    // Get inputs from the fields
+                    double principal = Double.parseDouble(principalField.getText());
+                    double rate = Double.parseDouble(rateField.getText()) / 100;
+                    double time = Double.parseDouble(timeField.getText());
+
+                    // Calculate total amount and interest amount
+                    double totalAmount = principal * Math.pow((1 + rate), time);
+                    double interestAmount = totalAmount - principal;
+
+                    // Display the results
+                    totalAmountField.setText(String.format("%.2f", totalAmount));
+                    interestAmountField.setText(String.format("%.2f", interestAmount));
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(frame, "Please enter valid numbers.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
+        // Add ActionListener to the Clear button
+        clearButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Clear all input and output fields
+                principalField.setText("");
+                rateField.setText("");
+                timeField.setText("");
+                totalAmountField.setText("");
+                interestAmountField.setText("");
+            }
+        });
+
+        // Add ActionListener to the Close button
+        closeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose(); // Close the window
+            }
+        });
+
+        // Add components to the frame
+        frame.add(principalLabel);
+        frame.add(principalField);
+        frame.add(rateLabel);
+        frame.add(rateField);
+        frame.add(timeLabel);
+        frame.add(timeField);
+        frame.add(totalAmountLabel);
+        frame.add(totalAmountField);
+        frame.add(interestAmountLabel);
+        frame.add(interestAmountField);
+        frame.add(calculateButton);
+        frame.add(clearButton);
+        frame.add(closeButton);
+
+        // Make the frame visible
+        frame.setVisible(true);
+    }
+}
